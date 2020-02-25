@@ -1,19 +1,15 @@
-var addTodoForm = document.getElementById('add-todo');
-var list = document.getElementById('list');
-var caption = document.getElementById('caption');
-
 // Lorsque le formulaire est envoyé
-addTodoForm.onsubmit = function(event) {
+$('#add-todo').on( 'submit', function(event) {
   // Empêche le formulaire de s'envoyer normalement
   event.preventDefault();
-  // Crée un nouvel élément de type "li"
-  var newElement = document.createElement('li');
-  newElement.classList.add('list-group-item');
-  newElement.classList.add('list-group-item-action');
-  // Insère la valeur du champ texte dans le contenu de l'élement
-  newElement.innerText = caption.value;
-  // Ajoute le nouvel élément à la liste
-  list.appendChild(newElement);
-  // Efface le contenu du champ texte
-  caption.value = '';
-}
+  // Crée un nouvel élément à partir de son code HTML
+  var newElement = $(
+    '<li class="list-group-item list-group-item-action">' +
+    $('#caption').val() +
+    '</li>'
+  );
+  // Ajoute cet élément dans la liste
+  $('#list').append(newElement);
+  // Efface le contenu actuel du champ texte
+  $('#caption').val('');
+});

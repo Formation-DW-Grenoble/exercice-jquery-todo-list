@@ -7,17 +7,17 @@ function createNewTodo(text) {
     '</span>' +
     '</li>'
   );
-
+  // Crée un nouveau bouton de changement de nom
   var nameChangeButton = createNameChangeButton();
-
+  // Rajoute le bouton de changement de nom dans les enfants du nouvel élément
   newElement.append(nameChangeButton);
   // Crée un nouveau bouton de suppression
   var deleteButton = createDeleteButton();
   // Rajoute le bouton de suppression dans les enfants du nouvel élément
   newElement.append(deleteButton);
-
+  // Crée un nouveau formulaire de changement de nom
   var nameChangeForm = createNameChangeForm();
-
+  // Rajoute le formulaire de changement de nom en tête des enfants du nouvel élément
   newElement.prepend(nameChangeForm);
   // Renvoie le nouvel élément
   return newElement;
@@ -59,13 +59,20 @@ function createDeleteButton() {
 }
 
 function createNameChangeButton() {
+  // Crée un nouveau bouton
   var nameChangeButton = $('<button class="btn btn-primary btn-sm float-right"><i class="fas fa-pen"></i></button>');
+  // Associe une action au fait de cliquer sur le bouton
   nameChangeButton.on( 'click', function(event) {
     // Enlever du formulaire la classe qui le rend invisible
-    $(event.target).parents('li.todo-item').children('.name-change-form').removeClass('d-none');
+    $(event.target).parents('li.todo-item').children('.name-change-form').removeClass
+    ('d-none');
     // Rajouter au nom la classe qui le rend invisible
-    $(event.target).parents('li.todo-item').children('span.todo-name').addClass('d-none');
+    var todoName = $(event.target).parents('li.todo-item').children('span.todo-name');
+    todoName.addClass('d-none');
+    // Changer le contenu actuel du champ texte pour le nom de la tâche à faire
+    $(event.target).parents('li.todo-item').find('input.todo-name').val(todoName.html());
   })
+  // Renvoie le nouveau bouton
   return nameChangeButton;
 }
 

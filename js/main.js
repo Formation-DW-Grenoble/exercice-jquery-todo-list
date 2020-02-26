@@ -26,7 +26,7 @@ function createNewTodo(text) {
 function createNameChangeForm() {
   // Crée un nouveau formulaire avec un champ texte et un bouton de validation
   var newForm = $(
-    '<form class="name-change-form d-none"><div class="d-flex"><input class="todo-name" type="text"/><button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button></div></form>'
+    '<form class="name-change-form d-none"><div class="d-flex"><input class="todo-name form-control" type="text"/><button type="submit" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button></div></form>'
   );
   // Associe une action au fait de valider le formulaire
   newForm.on( 'submit', function(event) {

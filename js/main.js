@@ -70,7 +70,10 @@ function createNameChangeButton() {
     var todoName = $(event.target).parents('li.todo-item').children('span.todo-name');
     todoName.addClass('d-none');
     // Changer le contenu actuel du champ texte pour le nom de la tâche à faire
-    $(event.target).parents('li.todo-item').find('input.todo-name').val(todoName.html());
+    var nameChangeField = $(event.target).parents('li.todo-item').find('input.todo-name');
+    nameChangeField.val(todoName.html());
+    // Place automatiquement le curseur à l'intérieur du champ texte
+    nameChangeField.focus();
   })
   // Renvoie le nouveau bouton
   return nameChangeButton;
